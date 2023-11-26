@@ -1,0 +1,300 @@
+#include "Arduino.h"
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
+ 
+SoftwareSerial mySoftwareSerial(10, 11); // RX, TX
+DFRobotDFPlayerMini myDFPlayer;
+
+void setup() {
+  mySoftwareSerial.begin(9600);
+  // put your setup code here, to run once:
+  Serial.begin(9600); //Tx0 and Rx0  //Set Baud Rate to 9600 for Serial Communication Tx0 and Rx0
+  Serial1.begin(9600);  //Tx1 and Rx1  //Connected to Bluetooth Module HC-05 (Bluetooth 2.0)
+  //Serial2;  //Tx2 and Rx2
+  //Serial3;  //Tx3 and Rx3
+
+  pinMode(22, OUTPUT);
+  pinMode(24, OUTPUT);
+  pinMode(26, OUTPUT);
+  pinMode(28, OUTPUT);
+   pinMode(30, OUTPUT);
+   pinMode(32, OUTPUT);
+   pinMode(34, OUTPUT);
+   pinMode(36, OUTPUT);
+   pinMode(38, OUTPUT);
+   pinMode(40, OUTPUT);
+   pinMode(42, OUTPUT);
+   pinMode(44, OUTPUT);
+   pinMode(46, OUTPUT);
+   pinMode(48, OUTPUT);
+   pinMode(50, OUTPUT);
+   pinMode(52, OUTPUT);
+Serial.println();
+Serial.println(F("DFRobot DFPlayer Mini Demo"));
+Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+ 
+if (!myDFPlayer.begin(mySoftwareSerial)) { //Use softwareSerial to communicate with mp3.
+Serial.println(F("Unable to begin:"));
+Serial.println(F("1.Please recheck the connection!"));
+Serial.println(F("2.Please insert the SD card!"));
+while (true) {
+delay(0); // Code to compatible with ESP8266 watch dog.
+}
+}
+Serial.println(F("DFPlayer Mini online."));
+ 
+//myDFPlayer.volume(15); //ตั้งระดับความดังของเสียง 0-30
+  Serial.println("press \"a\" or \"A\" to switch ON the LED");  //To Desktop
+  Serial.println("press \"b\" or \"B\" to switch OFF the LED");
+  Serial1.println("press \"a\" or \"A\" to switch ON the LED"); //To mobile
+  Serial1.println("press \"b\" or \"B\" to switch OFF the LED");
+}
+
+void loop() {
+  int val0 = analogRead(A);
+//  int val1 = analogRead(A13);
+//  int val2 = analogRead(A14);
+//  int val3 = analogRead(A15);
+ 
+  
+  
+  int Play1 = map(val0,0,350,0,30);
+  if (Play1 > 10 ) {
+  myDFPlayer.volume(Play1);
+  myDFPlayer.play(1);
+  }
+//
+//  int Play2 = map(val1,0,350,0,30);
+//  if (Play2 > 10 ) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(2);
+//  }
+//  int Play3 = map(val2,0,350,0,30);
+//  if (Play3 > 10 ) {
+//  myDFPlayer.volume(Play3);
+//  myDFPlayer.play(3);
+//  }
+//  int Play4 = map(val3,0,350,0,30);
+//  if (Play4 > 10 ) {
+//  myDFPlayer.volume(Play4);
+//  myDFPlayer.play(4); 
+//  }
+//  int Play5 = map(val4,0,350,0,30);
+//  if (Play5 > 10 ) {
+//  myDFPlayer.volume(Play5);
+//  myDFPlayer.play(5);
+//  }
+//  int Play6 = map(val5,0,350,0,30);
+//  if (Play6 > 10 ) {
+//  myDFPlayer.volume(Play6);
+//  myDFPlayer.play(6);
+//  }
+//  int Play7 = map(val6,0,350,0,30);
+//  if (Play7 > 10 ) {
+//  myDFPlayer.volume(Play7);
+//  myDFPlayer.play(7);
+//  }
+//  int Play8 = map(val7,0,350,0,30);
+//  if (Play8 > 10 ) {
+//  myDFPlayer.volume(Play8);
+//  myDFPlayer.play(8);
+//  }
+//  int Play9 = map(val8,0,350,0,30);
+//  if (Play9 > 10 ) {
+//  myDFPlayer.volume(Play9);
+//  myDFPlayer.play(9);
+//  }
+//  int Play10 = map(val9,0,350,0,30);
+//  if (Play10 > 10 ) {
+//  myDFPlayer.volume(Play10);
+//  myDFPlayer.play(10);
+//  }
+//  int Play11 = map(val10,0,350,0,30);
+//  if (Play11 > 10 ) {
+//  myDFPlayer.volume(Play11);
+//  myDFPlayer.play(11);
+//  }
+//  int Play12 = map(val11,0,350,0,30);
+//  if (Play12 > 10 ) {
+//  myDFPlayer.volume(Play12);
+//  myDFPlayer.play(12);
+//  }
+//  int Play13 = map(val12,0,350,0,30);
+//  if (Play13 > 10 ) {
+//  myDFPlayer.volume(Play13);
+//  myDFPlayer.play(13);
+//  }
+//  int Play14 = map(val13,0,350,0,30);
+//  if (Play14 > 10 ) {
+//  myDFPlayer.volume(Play14);
+//  myDFPlayer.play(14);
+//  }
+//  int Play15 = map(val14,0,350,0,30);
+//  if (Play15 > 10 ) {
+//  myDFPlayer.volume(Play15);
+//  myDFPlayer.play(15);
+//  }
+//  int Play16 = map(val15,0,350,0,30);
+//  if (Play16 > 10 ) {
+//  myDFPlayer.volume(Play16);
+//  myDFPlayer.play(16);
+//  }
+//  if (Play1 > 10 and Play2 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(17);
+//  }
+
+//  if (Play1 > 10 and Play5 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(20);
+//  }
+//  if (Play1 > 10 and Play6 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(21);
+//  }
+//  if (Play1 > 10 and Play7 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(22);
+//  }
+//  if (Play1 > 10 and Play8 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(23);
+//  }
+//  if (Play1 > 10 and Play9 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(24);
+//  }
+//  if (Play1 > 10 and Play10 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(25);
+//  }
+//  if (Play1 > 10 and Play11 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(26);
+//  }
+//  if (Play1 > 10 and Play12 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(27);
+//  }
+//  if (Play1 > 10 and Play13 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(28);
+//  }
+//  if (Play1 > 10 and Play14 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(29);
+//  }
+//  if (Play1 > 10 and Play15 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(30);
+//  }
+//  if (Play1 > 10 and Play16 > 10) {
+//  myDFPlayer.volume(Play1);
+//  myDFPlayer.play(31);
+//  }
+//  if (Play2 > 10 and Play3 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(32);
+//  }
+//  if (Play2 > 10 and Play4 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(33);
+//  }
+//  if (Play2 > 10 and Play5 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(34);
+//  }
+//  if (Play2 > 10 and Play6 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(35);
+//  }
+//  if (Play2 > 10 and Play7 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(36);
+//  }
+//  if (Play2 > 10 and Play8 > 10) {
+//  myDFPlayer.volume(Play2);
+//  myDFPlayer.play(37);
+//  }
+  
+  
+  
+  if(Serial1.available()>0)
+  {
+    int buffer_value = Serial1.read();
+    if(buffer_value == 'a' || buffer_value == 'A')
+    {
+      myDFPlayer.volume(20);
+      delay(2000);
+      digitalWrite (22 , 1);
+      myDFPlayer.play(1);
+      digitalWrite (22 , 0);
+      delay(1000);
+      digitalWrite (24 , 1);
+      myDFPlayer.play(2);
+      digitalWrite (24 , 0);
+      delay(1000);
+      digitalWrite (26 , 1);
+      myDFPlayer.play(3);
+      digitalWrite (26 , 0);
+      delay(1000);
+      digitalWrite (28 , 1);
+      myDFPlayer.play(4);
+      digitalWrite (28 , 0);
+      delay(1000);
+      digitalWrite (26 , 1);
+      myDFPlayer.play(3);
+      digitalWrite (26 , 0);
+      delay(1000);
+      digitalWrite (24 , 1);
+      myDFPlayer.play(2);
+      digitalWrite (24 , 0);
+      delay(1000);
+      digitalWrite (22 , 1);
+      myDFPlayer.play(1);
+      digitalWrite (22 , 0);
+      delay(1000);
+    }
+    else if(buffer_value == 'b' || buffer_value == 'B')
+    {
+      myDFPlayer.volume(20);
+      delay(2000);
+      digitalWrite (22 , 1);
+      digitalWrite (24 , 1);
+      myDFPlayer.play(5);
+      digitalWrite (22 , 0);
+      digitalWrite (24 , 0);
+        delay(1000);
+      digitalWrite (22 , 1);
+      digitalWrite (26 , 1);
+        myDFPlayer.play(6);
+      digitalWrite (22 , 0);
+      digitalWrite (26 , 0);
+        delay(1000);
+        digitalWrite (22 , 1);
+      digitalWrite (28 , 1);
+        myDFPlayer.play(7);
+        digitalWrite (22 , 0);
+      digitalWrite (28 , 0);
+        delay(1000);
+        digitalWrite (24 , 1);
+      digitalWrite (26 , 1);
+        myDFPlayer.play(8);
+        digitalWrite (24 , 0);
+      digitalWrite (26 , 0);
+        delay(1000);
+        digitalWrite (24 , 1);
+      digitalWrite (28 , 1);
+        myDFPlayer.play(9);
+        digitalWrite (24 , 0);
+      digitalWrite (28 , 0);
+        delay(1000);
+        digitalWrite (26 , 1);
+      digitalWrite (28 , 1);
+        myDFPlayer.play(10);
+        digitalWrite (26 , 0);
+      digitalWrite (28 , 0);
+        delay(1000);
+    }
+  }
+}
